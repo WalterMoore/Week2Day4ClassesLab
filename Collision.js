@@ -1,14 +1,11 @@
-		/*var Person = function(name){
-			this.name = name;
-		};
 
-		Person.prototype.greet = function(){
-			return 'Hi, I am ' + this.name;
-		}
-		//Uses the keyword new to instantiate an object
-		var bob = new Person('bob');
-		bob.greet()//'Hi, I am bob.'
-		(bob instanceof Person) //true*/
+
+
+
+
+
+
+
 function inherit(proto) {
   function F() {}
   F.prototype = proto
@@ -40,30 +37,40 @@ Vehicle.prototype.damage = function(){
 Vehicle.prototype.remove = function(){}
 	
 
-function Car(){}
-
-Car.prototype = inherit(Vehicle.prototype);
+//using inherit function
+//dont need to define car function
+//because inherit retuns a function
+var Car = inherit(Vehicle.prototype);
 Car.damageTolerance = 2;
 
-
+//not using inherit function
+//need this function in order to work
 function Copcar(){}
-
-Copcar.prototype = inherit(Vehicle.prototype);
+//coping prototype from vehicle to copcar
+Copcar.prototype = Vehicle.prototype;
 Copcar.damageTolerance = 3;
 Copcar.heading = "vertical";
 
 
 function Tank(){}
-
-Tank.prototype = inherit(Vehicle.prototype);
+Tank.prototype = Vehicle.prototype;
 Tank.damageTolerance = 10;
 Tank.rateModifier = .5;
-Tank.heading = "diagonalTopLefttoBottomRight";
+Tank.heading = "diagonalTopLeftToBottomRight";
 
 
 function Moto(){}
-
-Moto.prototype = inherit(Vehicle.prototype);
+Moto.prototype = Vehicle.prototype;
 Moto.damageTolerance = 1;
 Moto.rateModifier = 2;
+Moto.heading = "diagonalTopRightToBottomLeft";
+
+
+function Possum(){}
+Possum.prototype = Vehicle.prototype;
+Possum.damageTolerance = 1;
+Possum.rateModifier = .5;
+Possum.damageInflicted = 0;
+Possum.heading = "confused";
+
 

@@ -4,5 +4,13 @@
 }
 
 body{
-	background: rgb(120,120,110)
+	background: rgb(120,120,110);
+}
+
+.road{
+	height: 250px;
+	width: 45%;
+	border: 4px dashed yellow;
+	margin: 20px;
+	float: left;
 }
