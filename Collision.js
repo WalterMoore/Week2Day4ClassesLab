@@ -9,26 +9,61 @@
 		var bob = new Person('bob');
 		bob.greet()//'Hi, I am bob.'
 		(bob instanceof Person) //true*/
-
-function vehicle(rate,direction,damage,totalled){
-	this.rate = 4;
-	this.direction = //horizontal
-	this.damage = 2;
-	this.totaled = /*all hits totalled*/;
+function inherit(proto) {
+  function F() {}
+  F.prototype = proto
+  return new F
 }
- 
-var car = vehicle;
+		
 
-var copCar = new vehicle;
-	copCar.direction = //vertical
-	copCar.damage = 3;
 
-var tank = new vehicle;
-	tank.rate = 2;
-	tank.direction = //diagonal from top left towards bottom right.
-	tank.damage = 10;
+function Vehicle(){
+	this.damageTolerance = 0;
+	this.damageInflicted = 1;
+	this.rate = 4;
+	this.rateModifier = 1;
+	//this.heading = horizontal()
+	this.heading = "horizontal";
+}
+
+Vehicle.prototype.move = function() {
+	var rate = 4
+	direction = function(){
+		//some manipulation of xy coordinates
+	}
+}
+
+Vehicle.prototype.damage = function(){
+	var dam = 2;
+}
+//Vehicle.prototype.totaled = function(){}
+Vehicle.prototype.remove = function(){}
 	
-var moto = new vehicle;
-	moto.rate = 8
-	moto.direction = //diagonal from top right towards bottom left.
-	moto.damage = 1;
+
+function Car(){}
+
+Car.prototype = inherit(Vehicle.prototype);
+Car.damageTolerance = 2;
+
+
+function Copcar(){}
+
+Copcar.prototype = inherit(Vehicle.prototype);
+Copcar.damageTolerance = 3;
+Copcar.heading = "vertical";
+
+
+function Tank(){}
+
+Tank.prototype = inherit(Vehicle.prototype);
+Tank.damageTolerance = 10;
+Tank.rateModifier = .5;
+Tank.heading = "diagonalTopLefttoBottomRight";
+
+
+function Moto(){}
+
+Moto.prototype = inherit(Vehicle.prototype);
+Moto.damageTolerance = 1;
+Moto.rateModifier = 2;
+
