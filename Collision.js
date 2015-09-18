@@ -9,46 +9,69 @@ function createButton() {
 }
 
 function createVehicle() {
+	//for(i = 0;i < 3000; i++){//this is a test to see what a full screen looks like.
 	var myVehicle = document.createElement('div');
-	myVehicle.className = 'car';
+	document.body.appendChild(myVehicle);
+	myVehicle.className = 'vehicle';
 	
-	//var car = new Car();
-	//car.div = myVehicle;
+	//this is where any vehicle appears:
 	myVehicle.style.top = Math.floor(Math.random() * 400 + 30);
 	myVehicle.style.left = Math.floor(Math.random() * 520 + 30);
 	//myVehicle.addEventListener("click",changeColor);
 	//function changeColor() {
+	
+	var pickType = Math.floor(Math.random()*100);
+	if(pickType <= 70){
+	
+	//this is to create cars with random colors:
+	//var car = new Car();
+	//car.div = myVehicle;
+		
   		function c() {
   			return Math.floor(Math.random()* 256).toString(16);
   		}
-	myVehicle.style.backgroundColor = "#"+c()+c()+c();
-		/*}
-		myVehicle.style.height = '99px';
-		myVehicle.style.width = '99px';
-		myVehicle.style.backgroundColor = 'black';
-		myVehicle.style.margin = '5px';
-		myVehicle.style.cssFloat = 'left';
-		myVehicle.style.fontSize = '75px';
-		myVehicle.style.fontWeight = 'bold';
-		myVehicle.style.textAlign = 'center';
-		myVehicle.style.paddingTop = '10px';
-
-		document.body.appendChild(p);*/
-		document.body.appendChild(myVehicle);
-				
-		/*mySquare.id = document.getElementsByClassName('square').length;
-        mySquare.addEventListener("mouseover", numberAppear);
-        mySquare.addEventListener("mouseout", numberDisappear);
-        mySquare.addEventListener("dblclick", removeElement);*/
+		  var car = new Car();
+		  car.div = myVehicle;
+		car.div.style.backgroundColor = "#"+"FF"+c()+c();
+	}else if(pickType >70 && pickType <= 80){
+		//create a cop car
+		var copCar = new Copcar();
+		copCar.div = myVehicle;
+		copCar.div.style.backgroundColor = 'blue';
+		copCar.div.style.height = 18;
+		copCar.div.style.width = 7;
+	}else if(pickType >80 && picktype <= 85){
+		//create a tank
+		var tank = new Tank();
+		tank.div = myVehicle;
+		tank.div.style.backgroundColor = '#6B8E23';
+		tank.div.style.height = 25;
+		tank.div.style.width = 12;
+	}else if(picktype >85 && picktype <= 92){
+		//create a motorcycle
+		var moto = new Moto();
+		moto.div = myVehicle;
+		moto.div.style.backgroundColor = 'yellow';
+		moto.div.style.height = 10;
+		moto.div.style.width = 3;
+	}else{
+		//create a possum
+		var possum = new Possum();
+		possum.div = myVehicle;
+		possum.div.style.backgroundColor = '#eeeeee';
+		possum.div.style.height = 4;
+		possum.div.style.width = 4;
+	//}	
 	}
+}
 
 
 
 
 function inherit(proto) {
   function F() {}
-  F.prototype = proto
-  return new F
+  F.prototype = proto;
+  return new F;
 }
 		
 
@@ -79,7 +102,8 @@ Vehicle.prototype.remove = function(){}
 //using inherit function
 //dont need to define car function
 //because inherit retuns a function
-var Car = inherit(Vehicle.prototype);
+function Car(){}
+Car.prototype = inherit(Vehicle.prototype);
 Car.damageTolerance = 2;
 
 //not using inherit function
