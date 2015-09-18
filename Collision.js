@@ -40,14 +40,14 @@ function createVehicle() {
 		copCar.div.style.backgroundColor = 'blue';
 		copCar.div.style.height = 18;
 		copCar.div.style.width = 7;
-	}else if(pickType >80 && picktype <= 85){
+	}else if(pickType >80 && pickType <= 85){
 		//create a tank
 		var tank = new Tank();
 		tank.div = myVehicle;
-		tank.div.style.backgroundColor = '#6B8E23';
+		tank.div.style.backgroundColor = '#A0D737';
 		tank.div.style.height = 25;
 		tank.div.style.width = 12;
-	}else if(picktype >85 && picktype <= 92){
+	}else if(pickType >85 && pickType <= 92){
 		//create a motorcycle
 		var moto = new Moto();
 		moto.div = myVehicle;
@@ -61,8 +61,8 @@ function createVehicle() {
 		possum.div.style.backgroundColor = '#eeeeee';
 		possum.div.style.height = 4;
 		possum.div.style.width = 4;
-	//}	
-	}
+	}	
+	//}
 }
 
 
@@ -83,6 +83,7 @@ function Vehicle(){
 	this.rateModifier = 1;
 	//this.heading = horizontal()
 	this.heading = "horizontal";
+	//I want to add 4 to 
 }
 
 Vehicle.prototype.move = function() {
@@ -105,32 +106,32 @@ Vehicle.prototype.remove = function(){}
 function Car(){}
 Car.prototype = inherit(Vehicle.prototype);
 Car.damageTolerance = 2;
-
+$("car.div").animate({left: '250px'});
 //not using inherit function
 //need this function in order to work
 function Copcar(){}
 //coping prototype from vehicle to copcar
-Copcar.prototype = Vehicle.prototype;
+Copcar.prototype = Object.create(Vehicle.prototype);
 Copcar.damageTolerance = 3;
 Copcar.heading = "vertical";
 
 
 function Tank(){}
-Tank.prototype = Vehicle.prototype;
+Tank.prototype = Object.create(Vehicle.prototype);
 Tank.damageTolerance = 10;
 Tank.rateModifier = .5;
 Tank.heading = "diagonalTopLeftToBottomRight";
 
 
 function Moto(){}
-Moto.prototype = Vehicle.prototype;
+Moto.prototype = Object.create(Vehicle.prototype);
 Moto.damageTolerance = 1;
 Moto.rateModifier = 2;
 Moto.heading = "diagonalTopRightToBottomLeft";
 
 
 function Possum(){}
-Possum.prototype = Vehicle.prototype;
+Possum.prototype = Object.create(Vehicle.prototype);
 Possum.damageTolerance = 1;
 Possum.rateModifier = .5;
 Possum.damageInflicted = 0;
