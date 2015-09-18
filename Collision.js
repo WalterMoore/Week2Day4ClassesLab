@@ -5,9 +5,42 @@ function createButton() {
 	var myButtonText = document.createTextNode('Click Me');						
 	myButton.appendChild(myButtonText);
 	document.body.appendChild(myButton);
-	myButton.addEventListener("click",createSquare);
+	myButton.addEventListener("click",createVehicle);
 }
 
+function createVehicle() {
+	var myVehicle = document.createElement('div');
+	myVehicle.className = 'car';
+	
+	//var car = new Car();
+	//car.div = myVehicle;
+	myVehicle.style.top = Math.floor(Math.random() * 400 + 30);
+	myVehicle.style.left = Math.floor(Math.random() * 520 + 30);
+	//myVehicle.addEventListener("click",changeColor);
+	//function changeColor() {
+  		function c() {
+  			return Math.floor(Math.random()* 256).toString(16);
+  		}
+	myVehicle.style.backgroundColor = "#"+c()+c()+c();
+		/*}
+		myVehicle.style.height = '99px';
+		myVehicle.style.width = '99px';
+		myVehicle.style.backgroundColor = 'black';
+		myVehicle.style.margin = '5px';
+		myVehicle.style.cssFloat = 'left';
+		myVehicle.style.fontSize = '75px';
+		myVehicle.style.fontWeight = 'bold';
+		myVehicle.style.textAlign = 'center';
+		myVehicle.style.paddingTop = '10px';
+
+		document.body.appendChild(p);*/
+		document.body.appendChild(myVehicle);
+				
+		/*mySquare.id = document.getElementsByClassName('square').length;
+        mySquare.addEventListener("mouseover", numberAppear);
+        mySquare.addEventListener("mouseout", numberDisappear);
+        mySquare.addEventListener("dblclick", removeElement);*/
+	}
 
 
 

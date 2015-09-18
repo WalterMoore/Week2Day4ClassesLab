@@ -7,9 +7,15 @@ body{
 	background: rgb(120,120,110);
 }
 
+.container{
+	width: 600px;
+	height: 480px;
+	position: relative;
+}
+
 .road{
-	height: 250px;
-	width: 45%;
+	height: 40%;
+	width: 40%;
 	border: 4px dashed yellow;
 	margin: 20px;
 	float: left;
@@ -20,7 +26,18 @@ button{
 	height: 40px;
 	width: 100px;
 	fontSize: 20px;
-	marginLeft: 10%;
-	marginRight: 50%;
-	position: absolute
+	margin-left: 240px;
+	/*margin-right: 50%;*/
+	
+	/*position: absolute*/
+}
+
+.car{
+	height: 5px;
+	width: 15px;
+	/*background-color: aqua;*/
+	position: absolute;
+	/*top: mathFloor(mathRandom()*400 + 40px;
+	margin-left: 50px;
+	style-left: 4px;*/
 }
