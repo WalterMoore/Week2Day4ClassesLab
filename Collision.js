@@ -1,6 +1,12 @@
+document.addEventListener("DOMContentLoaded", createButton);
 
-
-
+function createButton() {
+	var myButton = document.createElement('button');
+	var myButtonText = document.createTextNode('Click Me');						
+	myButton.appendChild(myButtonText);
+	document.body.appendChild(myButton);
+	myButton.addEventListener("click",createSquare);
+}
 
 
 

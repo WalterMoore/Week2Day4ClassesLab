@@ -14,3 +14,13 @@ body{
 	margin: 20px;
 	float: left;
 }
+
+button{
+	background-color: #BF5700;
+	height: 40px;
+	width: 100px;
+	fontSize: 20px;
+	marginLeft: 10%;
+	marginRight: 50%;
+	position: absolute
+}
