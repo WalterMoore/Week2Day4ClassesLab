@@ -7,12 +7,19 @@ $(document).ready(function() {
        v.move();
    });
    $('#btnAddMotorcycle').click(function() {
-       var v = new Vehicle('Vehicle');
+       var v = new Motorcycle();
        v.move();
    });
    $('#btnAddCar').click(function() {
        var c = new Car();
        c.move();
+
+       c.style.top = Math.floor(Math.random() * 400 + 30);
+	   c.style.left = Math.floor(Math.random() * 520 + 30);
+   });
+   $('#btnAddTank').click(function() {
+       var v = new Tank();
+       v.move();
    });
    
    
@@ -53,8 +60,13 @@ $(document).ready(function() {
            }
        );
    }
-   Vehicle.prototype.move = function (direction) {
+   Vehicle.prototype.moveDiag1 = function (direction) {
        this.moveRight();
+       this.moveDown();
+   }
+   
+   Vehicle.prototype.moveDiag2 = function (direction) {
+       this.moveLeft();
        this.moveDown();
    }
        
@@ -70,10 +82,11 @@ $(document).ready(function() {
        this.tolerance = 1;
        this.speed = 2000;
    }
+   
    function Car() {
        this.createVehicle('Car');
        this.tolerance = 2;
-       this.speed = 1000;
+       this.speed = 1500;
        this.move = function() {
            this.moveRight();
        }
@@ -83,7 +96,7 @@ $(document).ready(function() {
    function CopCar() {
        this.createVehicle('CopCar');
        this.tolerance = 3;
-       this.speed = 500;
+       this.speed = 1000;
        this.move = function() {
            this.moveDown();
        }
@@ -92,6 +105,31 @@ $(document).ready(function() {
    CopCar.prototype = Vehicle.prototype;
    
    function Motorcycle() {
-       
+       this.createVehicle('Motorcycle');
+       this.tolerance = 1;
+       this.speed = 700;
+       this.move = function(){
+           this.moveDiag1();
+       }
    }
+   
+   Motorcycle.prototype = Vehicle.prototype;
+
+   function Tank() {
+       this.createVehicle('Tank');
+       this.tolerance = 10;
+       this.speed = 2000;
+       this.move = function(){
+           this.moveDiag2();
+       }
+   }
+
+   Tank.prototype = Vehicle.prototype;
+   
+   
+
+
+
 });
+
+
