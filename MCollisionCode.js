@@ -106,11 +106,11 @@ $(document).ready(function() {
    
    function Car() {
        this.createVehicle('Car');
-        $(".Car").css({"background-color": 	"#FF" + 
+        $(this.div).css({"background-color": 	"#FF" + 
         Math.floor(Math.random()* 256).toString(16) + 
         Math.floor(Math.random()* 256).toString(16)
   		})
-        $(".Car").css({"top": Math.floor(Math.random() * 600 + 30)})
+        $(this.div).css({"top": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 2;
        this.speed = 3000;
        this.move = function() {
@@ -124,7 +124,7 @@ $(document).ready(function() {
    
    function CopCar() {
        this.createVehicle('CopCar');
-       $(".CopCar").css({"left": Math.floor(Math.random() * 600 + 30)})
+       $(this.div).css({"left": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 3;
        this.speed = 2000;
        this.move = function() {
@@ -137,7 +137,7 @@ $(document).ready(function() {
    
    function Motorcycle() {
        this.createVehicle('Motorcycle');
-       $(".Motorcycle").css({"top": Math.floor(Math.random() * 600 + 30)})
+       $(this.div).css({"top": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 1;
        this.speed = 1400;
        this.move = function(){
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
    function Tank() {
        this.createVehicle('Tank');
-       $(".Tank").css({"left": Math.floor(Math.random() * 600 + 30)})
+       $(this.div).css({"left": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 10;
        this.speed = 4000;
        this.move = function(){
