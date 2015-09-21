@@ -13,13 +13,14 @@ $(document).ready(function() {
    $('#btnAddCar').click(function() {
        var c = new Car();
        c.move();
-
-       c.style.top = Math.floor(Math.random() * 400 + 30);
-	   c.style.left = Math.floor(Math.random() * 520 + 30);
    });
    $('#btnAddTank').click(function() {
        var v = new Tank();
        v.move();
+   });
+   $('#btnSurpriseMe').click(function() {
+       var v = new Godzilla();
+       v.move();   
    });
    
    
@@ -69,12 +70,35 @@ $(document).ready(function() {
        this.moveLeft();
        this.moveDown();
    }
+   
+   Vehicle.prototype.moveRampage1 = function(){
+       $(this.div).animate({
+           top: height}, {
+               duration: this.speed * .5,
+               queue: false,
+               complete: this.moveDiag1.bind(this)
+           }
+       );
+   }
+   
+      Vehicle.prototype.moveRampage2 = function(){
+       $(this.div).animate({
+           top: height}, {
+               duration: this.speed,
+               queue: false,
+               complete: this.moveDiag1.bind(this)
+           }
+       );
+   }
        
    Vehicle.prototype.remove = function () {
 
    }
    Vehicle.prototype.createVehicle = function(vehicleType) {
        this.div = $('<div class="' + vehicleType + '"></div>');
+       var vid = 0;
+       this.div.id = vid;
+       vid++; 
        $(document.body).append(this.div);
    }
     function Vehicle(vehicleType){
@@ -85,49 +109,71 @@ $(document).ready(function() {
    
    function Car() {
        this.createVehicle('Car');
+        $(".Car").css({"background-color": 	"#FF" + 
+        Math.floor(Math.random()* 256).toString(16) + 
+        Math.floor(Math.random()* 256).toString(16)
+  		})
+        $(".Car").css({"top": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 2;
-       this.speed = 1500;
+       this.speed = 3000;
        this.move = function() {
            this.moveRight();
+           
        }
    }
    Car.prototype = Vehicle.prototype;
    
+   
+   
    function CopCar() {
        this.createVehicle('CopCar');
+       $(".CopCar").css({"left": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 3;
-       this.speed = 1000;
+       this.speed = 2000;
        this.move = function() {
            this.moveDown();
        }
    }
-   
    CopCar.prototype = Vehicle.prototype;
+   
+   
    
    function Motorcycle() {
        this.createVehicle('Motorcycle');
+       $(".Motorcycle").css({"top": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 1;
-       this.speed = 700;
+       this.speed = 1400;
        this.move = function(){
            this.moveDiag1();
        }
    }
-   
    Motorcycle.prototype = Vehicle.prototype;
+
+
 
    function Tank() {
        this.createVehicle('Tank');
+       $(".Tank").css({"left": Math.floor(Math.random() * 600 + 30)})
        this.tolerance = 10;
-       this.speed = 2000;
+       this.speed = 4000;
        this.move = function(){
            this.moveDiag2();
        }
    }
-
    Tank.prototype = Vehicle.prototype;
    
    
-
+   function Godzilla() {
+       this.createVehicle('Godzilla');
+       $(".Godzilla").css({"top": Math.floor(Math.random() * 300 + 150)})
+       this.tolerance = 100;
+       this.speed = 12000;
+       this.move = function(){
+           this.moveDiag1();
+           //this.moveRampage2();
+       }
+   }
+   Godzilla.prototype = Vehicle.prototype;
 
 
 });
