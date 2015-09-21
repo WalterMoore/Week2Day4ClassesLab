@@ -96,9 +96,6 @@ $(document).ready(function() {
    }
    Vehicle.prototype.createVehicle = function(vehicleType) {
        this.div = $('<div class="' + vehicleType + '"></div>');
-       var vid = 0;
-       this.div.id = vid;
-       vid++; 
        $(document.body).append(this.div);
    }
     function Vehicle(vehicleType){
